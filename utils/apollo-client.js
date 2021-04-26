@@ -1,11 +1,10 @@
-import { ApolloClient, InMemoryCache  } from "@apollo/client";
+import { ApolloClient, InMemoryCache, HttpLink  } from "@apollo/client";
+
+const httpLink = new HttpLink({ uri: 'https://rickandmortyapi.com/graphql', fetchOptions: { mode: 'no-cors' } });
 
 const client = new ApolloClient({
-      uri: "https://rickandmortyapi.com",
-      fetchOptions: {
-        mode: 'no-cors',
-      },
-      cache: new InMemoryCache(),
+  link: httpLink,
+  cache: new InMemoryCache(),
 });
 
 export default client;

@@ -2,13 +2,26 @@ import { useQuery, gql  } from "@apollo/client";
 import styles from "../styles/Home.module.css";
 
 const QUERY = gql`
-  query Countries {
-    countries {
-      code
-      name
-      emoji
+query {
+  Locations {
+    info {
+      count
+      pages
+
     }
-}`;
+    results {
+      id
+      name
+      dimension
+      residents {
+        name
+        species
+
+      }
+      created
+    }
+  }
+}`
 
 export default function Locations() {
   const { data, loading, error } = useQuery(QUERY);
